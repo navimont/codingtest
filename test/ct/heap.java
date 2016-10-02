@@ -1,20 +1,20 @@
 package ct;
 
 
-import com.google.common.collect.ImmutableList;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
-public class heap {
+public class Heap {
     @Test
     public void testShort() {
-        List<Integer> data = ImmutableList.of(8, 4, 1, 2, 4, 9, 5, 3, 8, 1);
+        List<Integer> data = Arrays.asList(8, 4, 1, 2, 4, 9, 5, 3, 8, 1);
         List<Integer> sorted = siftupDownSort(data);
         assertSorted(sorted);
     }
@@ -28,21 +28,21 @@ public class heap {
 
     @Test
     public void testSorted() {
-        List<Integer> data = ImmutableList.of(4,5,6,7,8,9,9,9,10,11,15,60);
+        List<Integer> data = Arrays.asList(4,5,6,7,8,9,9,9,10,11,15,60);
         List<Integer> sorted = siftupDownSort(data);
         assertSorted(sorted);
     }
 
     @Test
     public void testAllTheSame() {
-        List<Integer> data = ImmutableList.of(4,4,4,4,4,4,4);
+        List<Integer> data = Arrays.asList(4,4,4,4,4,4,4);
         List<Integer> sorted = siftupDownSort(data);
         assertSorted(sorted);
     }
 
     @Test
     public void testDegenerated() {
-        List<Integer> data = ImmutableList.of(8);
+        List<Integer> data = Arrays.asList(8);
         List<Integer> sorted = siftupDownSort(data);
         assertSorted(sorted);
     }
@@ -99,8 +99,8 @@ public class heap {
         }
     }
 
-    // move element in the last cell of the list to its proper place in the heap
-    // assume the rest of the heap is already in order
+    // move element in the last cell of the list to its proper place in the Heap
+    // assume the rest of the Heap is already in order
     private void siftup(List<Integer> heap) {
         int i = heap.size()-1;
         while (i>1 && heap.get(i) < heap.get(i/2)) {
@@ -166,8 +166,8 @@ public class heap {
         }
     }
 
-    // consider h[l] the element to be inserted into the heap
-    // and sifted up towards root. The heap extends from before h(0,l-1) to after h(0,l)
+    // consider h[l] the element to be inserted into the Heap
+    // and sifted up towards root. The Heap extends from before h(0,l-1) to after h(0,l)
     private void siftUp(int[] h, int l) {
         while (l > 0) {
             if (h[l] > h[(l-1)/2]) {
@@ -179,7 +179,7 @@ public class heap {
         }
     }
 
-    // heap has size l
+    // Heap has size l
     private void repairAfterTakingRootElementAtIndex0(int[] h, int l) {
         if (l==2) {
             h[0]=h[1];
